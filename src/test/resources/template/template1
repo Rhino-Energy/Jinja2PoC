@@ -1,0 +1,26 @@
+EndDeviceConfigurations
+created: {{ configuration.created }}
+{% for endDeviceConfiguration in configuration.endDeviceConfigurations %}
+    EndDeviceConfiguration
+    numericEndDeviceId: {{ endDeviceConfiguration.numericEndDeviceId }}
+    {% if endDeviceConfiguration.subDeviceConfigurations.size() > 0 %}
+        SubDeviceConfigurations
+        {% for subDeviceConfiguration in endDeviceConfiguration.subDeviceConfigurations %}
+            model: {{ subDeviceConfiguration.model }}
+            {% if subDeviceConfiguration.transmissionParameters.size() > 0 %}
+                TransmissionParams
+                {% for entry in subDeviceConfiguration.transmissionParameters.entrySet() -%}
+                    {{ entry.getKey() }}: {{ entry.getValue()}}
+                {% endfor %}
+            {% endif %}
+            {% for meteringPointConfiguration in subDeviceConfiguration.meteringPointConfigurations %}
+                MeteringPointConfiguration
+                    id: {{ meteringPointConfiguration.id }}
+                    type: {{ meteringPointConfiguration.type }}
+                    interval: {{ meteringPointConfiguration.interval }}
+                    typeIndex: {{ meteringPointConfiguration.typeIndex }}
+                    disableIntervalAlignment: {{ meteringPointConfiguration.disableIntervalAlignment }}
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}

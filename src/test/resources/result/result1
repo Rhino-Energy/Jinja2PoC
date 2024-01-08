@@ -1,0 +1,39 @@
+EndDeviceConfigurations
+created: 2023-12-31T12:00
+EndDeviceConfiguration
+numericEndDeviceId: 1342179996
+
+    SubDeviceConfigurations
+
+        model: SchneiderElectric;PM5100
+
+            TransmissionParams
+            deviceAddress: 1
+            protocol: ModBus
+            baudrate: 38400
+            dataLength: 8
+            parity: Even
+            stopLength: 1
+            interface: RS485
+
+
+
+            MeteringPointConfiguration
+                id: 54073426
+                type: 7
+                interval: 900
+                typeIndex: 0
+                disableIntervalAlignment: false
+
+            MeteringPointConfiguration
+                id: 54073428
+                type: 7
+                interval: 900
+                typeIndex: 0
+                disableIntervalAlignment: false
+
+
+        model: SchneiderElectric;PM5200
+
+
+
